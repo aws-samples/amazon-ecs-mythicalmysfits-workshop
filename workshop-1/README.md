@@ -85,7 +85,7 @@ You will be deploying infrastructure on AWS which will have an associated cost. 
     In the bottom panel of your new Cloud9 IDE, you will see a terminal command line terminal open and ready to use.  Run the following git command in the terminal to clone the necessary code to complete this tutorial:
 
     ```
-    $ git clone -b fargate https://github.com/aws-samples/amazon-ecs-mythicalmysfits-workshop.git
+    $ git clone https://github.com/aws-samples/amazon-ecs-mythicalmysfits-workshop.git
     ```
 
     After cloning the repository, you'll see that your project explorer now includes the files cloned.
