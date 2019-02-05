@@ -95,7 +95,7 @@ You will be deploying infrastructure on AWS which will have an associated cost. 
     In the bottom panel of your new Cloud9 IDE, you will see a terminal command line terminal open and ready to use.  Run the following git command in the terminal to clone the necessary code to complete this tutorial:
 
     ```
-    $ git clone -b fargate https://github.com/aws-samples/aws-modern-application-workshop.git
+    $ git clone -b fargate https://github.com/aws-samples/amazon-ecs-mythicalmysfits-workshop.git
     ```
 
     After cloning the repository, you'll see that your project explorer now includes the files cloned.
@@ -103,7 +103,7 @@ You will be deploying infrastructure on AWS which will have an associated cost. 
     In the terminal, change directory to the subdirectory for this workshop in the repo:
 
     ```
-    $ cd aws-modern-application-workshop/workshop-3
+    $ cd amazon-ecs-mythicalmysfits-workshop/workshop-3
     ```
 
 5. Run some additional automated setup steps with the `setup` script:
@@ -995,7 +995,7 @@ If CloudFormation encounters a problem with deleting all resources, review the e
 
 ## Participation
 
-We encourage participation; if you find anything, please submit an [issue](https://github.com/aws-samples/aws-modern-application-workshop-STAGING/issues). However, if you want to help raise the bar, submit a [PR](https://github.com/aws-samples/aws-modern-application-workshop-STAGING/pulls)!
+We encourage participation; if you find anything, please submit an [issue](https://github.com/aws-samples/amazon-ecs-mythicalmysfits-workshop-STAGING/issues). However, if you want to help raise the bar, submit a [PR](https://github.com/aws-samples/amazon-ecs-mythicalmysfits-workshop-STAGING/pulls)!
 
 ## License
 

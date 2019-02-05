@@ -72,7 +72,7 @@ Our intern from last summer got started with Clair but didn't finish before she 
 <pre>
 $ cd ~/environment/<b><i>REPLACEME_LIKE_REPO_NAME</b></i>
 $ git checkout master
-$ cp ~/environment/aws-modern-application-workshop/workshop-2/Lab-4/hints/buildspec_clair.yml buildspec_clair.yml
+$ cp ~/environment/amazon-ecs-mythicalmysfits-workshop/workshop-2/Lab-4/hints/buildspec_clair.yml buildspec_clair.yml
 </pre>
 
 2\. Check in your new file into the AWS CodeCommit repository.

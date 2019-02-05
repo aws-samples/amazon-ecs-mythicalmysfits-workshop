@@ -45,7 +45,7 @@ Replace the container name with the name of your service, which should be `like-
 <summary> HINT: There's also completed file in hints/hintspec_prod.yml. Click here to see how to copy it in.</summary>
   Make sure you change REPLACEME_REPO_URI to your ECR repository URI!
   <pre>
-  $ cp ~/environment/aws-modern-application-workshop-staging/workshop-2/Lab-3/hints/buildspec_prod.yml ~/environment/REPLACEME_REPO_NAME/buildspec_prod.yml
+  $ cp ~/environment/amazon-ecs-mythicalmysfits-workshop-staging/workshop-2/Lab-3/hints/buildspec_prod.yml ~/environment/REPLACEME_REPO_NAME/buildspec_prod.yml
   </pre>
 </details>
 
@@ -170,7 +170,7 @@ Now that you have your application deploying automatically, let's deploy a new v
 
 <pre>
 $ cd ~/environment/REPLACEME_LIKE_REPO
-$ cp ~/environment/aws-modern-application-workshop/workshop-2/Lab-3/mysfits_like_v2.py service/mysfits_like.py
+$ cp ~/environment/amazon-ecs-mythicalmysfits-workshop/workshop-2/Lab-3/mysfits_like_v2.py service/mysfits_like.py
 $ git add service/mysfits_like.py
 $ git commit -m "Cuddles v2"
 $ git push origin master

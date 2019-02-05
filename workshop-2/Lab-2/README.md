@@ -89,7 +89,7 @@ Another developer from the Mythical Mysfits team has started a buildspec_dev fil
 <pre>
 $ cd ~/environment/<b><i>REPLACEME_LIKE_REPO_NAME</b></i>
 $ git checkout -b dev
-$ cp ~/environment/aws-modern-application-workshop/workshop-2/Lab-2/hints/buildspec_dev.yml.draft buildspec_dev.yml
+$ cp ~/environment/amazon-ecs-mythicalmysfits-workshop/workshop-2/Lab-2/hints/buildspec_dev.yml.draft buildspec_dev.yml
 </pre>
 
 Now that you have a copy of the draft as your buildspec, you can start editing it. The previous developer left comments indicating what commands you need to add (<b>These comments look like - #[TODO]:</b>). Add the remaining instructions to your buildspec_dev.yml.  
@@ -145,7 +145,7 @@ phases:
 
 You can copy a pre-created one into your application directory. If you do, make sure you replace the REPOSITORY_URI with the one from your like-service ECR repository!
 <pre>
-$ cp ~/environment/aws-modern-application-workshop/workshop-2/Lab-2/hints/hintspec_dev.yml buildspec_dev.yml
+$ cp ~/environment/amazon-ecs-mythicalmysfits-workshop/workshop-2/Lab-2/hints/hintspec_dev.yml buildspec_dev.yml
 </pre>
 
 </details>
