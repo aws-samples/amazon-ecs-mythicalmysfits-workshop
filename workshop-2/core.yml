@@ -12,9 +12,12 @@ Parameters:
       - "false"
 
   ClairDBPassword:
-    Description: The initial Clair DB password in RDS
+    Description: The initial Clair DB password in RDS. Minimum length 8, must only contain alphanumeric characteres
     NoEcho: true
     Type: String
+    MinLength: 8
+    MaxLength: 41
+    AllowedPattern: [a-zA-Z0-9]*
 
 Conditions:
   MakeBucket:
