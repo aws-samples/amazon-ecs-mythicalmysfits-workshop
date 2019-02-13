@@ -50,6 +50,13 @@ Mappings:
       CIDR: '10.0.3.0/24'
 
 Resources:
+  
+  ECSServiceLinkedRole:
+    Type: "AWS::IAM::ServiceLinkedRole"
+    Properties:
+      AWSServiceName: "ecs.amazonaws.com"
+      Description: "ECS Service Linked Role created by Mythical Mysfits stack"
+      
   MythicalArtifactBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Delete 
