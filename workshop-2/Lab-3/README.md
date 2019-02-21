@@ -45,7 +45,7 @@ Replace the container name with the name of your service, which should be `like-
 <summary> HINT: There's also completed file in hints/hintspec_prod.yml. Click here to see how to copy it in.</summary>
   Make sure you change REPLACEME_REPO_URI to your ECR repository URI!
   <pre>
-  $ cp ~/environment/amazon-ecs-mythicalmysfits-workshop-staging/workshop-2/Lab-3/hints/buildspec_prod.yml ~/environment/REPLACEME_REPO_NAME/buildspec_prod.yml
+  $ cp ~/environment/amazon-ecs-mythicalmysfits-workshop/workshop-2/Lab-3/hints/buildspec_prod.yml ~/environment/REPLACEME_REPO_NAME/buildspec_prod.yml
   </pre>
 </details>
 
