@@ -17,7 +17,7 @@ Parameters:
     Type: String
     MinLength: 8
     MaxLength: 41
-    AllowedPattern: [a-zA-Z0-9]*
+    AllowedPattern: "[a-zA-Z0-9]*"
 
 Conditions:
   MakeBucket:
@@ -55,7 +55,7 @@ Resources:
     Type: "AWS::IAM::ServiceLinkedRole"
     Properties:
       AWSServiceName: "ecs.amazonaws.com"
-      Description: "ECS Service Linked Role created by Mythical Mysfits stack"
+      Description: "Role to enable Amazon ECS to manage your cluster."
       
   MythicalArtifactBucket:
     Type: AWS::S3::Bucket
