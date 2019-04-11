@@ -533,3 +533,6 @@ Outputs:
       !Join ["",["https://",!Ref "AWS::Region",".console.aws.amazon.com/cloud9/ide/",!Ref MythicalEnvironment,"?region=",!Ref "AWS::Region"]]
   ProfileName:
     Value: !Ref MythicalProfile
+  S3WebsiteURL:
+    Description: This is the DNS name of your S3 site
+    Value: !GetAtt MythicalBucket.WebsiteURL
