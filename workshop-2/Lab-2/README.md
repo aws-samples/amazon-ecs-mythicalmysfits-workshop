@@ -34,7 +34,7 @@ On the **Create build project** page, enter in the following details:
 - Operating System: Select **Ubuntu** - *This is the OS that will run your build*
 - Runtime: Select **Docker** - *Each image has specific versions of software installed. See [Docker Images Provided by AWS CodeBuild](http://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html)*
 - Runtime version: Select **Standard** - *This will default to the latest*
-- Image: **aws/codebuild/standard:2.0**
+- Image: **aws/codebuild/standard:1.0**
 - Image version: **Leave as is**
 - Privileged: **Ensure Checked** - *You can't actually change anything here. In order for to run Docker inside a Docker container, you need to have elevated privileges*
 - Service role: **Existing service role** - *A service role was automatically created for you via CFN*
