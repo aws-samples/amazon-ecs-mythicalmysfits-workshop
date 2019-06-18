@@ -87,7 +87,10 @@ On the following pages, enter the following details:
 
 - Pipeline name: `prod-like-service` - *This is a production pipeline, so we'll prefix with prod*
 - Service role: **Existing service role** - *A service role was automatically created for you via CFN*
-- Role name: Choose **CFNStackName-CodeBuildServiceRole** - *Look for the service role that has the name of the CFN stack you created previously*
+- Role name: Choose **CFNStackName-CodePipelineServiceRole** - *Look for the service role that has the name of the CFN stack you created previously*
+
+**Click Advanced Settings**
+
 - Artifact store: Choose **Custom location** - *An artifact bucket was created for you via CFN*
 - Bucket: Choose **CFNStackName-mythicalartifactbucket** - *Look for the artifact bucket that has the name of the CFN stack you created previously. Note that there are two buckets that were created for you. Look for the one that says mythicalartifactbucket*
 
@@ -109,6 +112,7 @@ Click **Next**.
 **Add build stage:**
 
 - Build provider: **AWS CodeBuild**
+- Region: **Choose the region you are in. It will say in the top right hand corner of the console**
 - Project name: Click **Create a new build project**
 
 A new window should appear. The values here are almost identical to that of Lab-2 when you created your dev CodeBuild project, with the exception that the name is now prod-like-service-build and the buildspec will be buildspec_prod.yml. See Lab-2 instructions for detailed screenshots.
@@ -118,10 +122,10 @@ A new window should appear. The values here are almost identical to that of Lab-
 - Project name: `prod-like-service-build` 
 - Environment Image: Select **Managed Image** - *There are two options. You can either use a predefined Docker container that is curated by CodeBuild, or you can upload your own if you want to customize dependencies etc. to speed up build time*
 - Operating System: Select **Ubuntu** - *This is the OS that will run your build*
-- Runtime: Select **Docker** - *Each image has specific versions of software installed. See [Docker Images Provided by AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html)*
-- Runtime version: Select **aws/codebuild/docker:17.09.0** - *This will default to the latest*
+- Runtime: Select **Standard** - *Each image has specific versions of software installed. See [Docker Images Provided by AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html)*
+- Image: **aws/codebuild/standard:1.0**
 - Image version: **Leave as is**
-- Privileged: **Leave as is** - *You can't actually change anything here. In order for to run Docker inside a Docker container, you need to have elevated privileges*
+- Privileged: **Ensure Checked** - *In order for to run Docker inside a Docker container, you need to have elevated privileges*
 - Service role: **Existing service role** - *A service role was automatically created for you via CFN*
 - Role name: Choose **CFNStackName-CodeBuildServiceRole** - *Look for the service role that has the name of the CFN stack you created previously. It will be in the form of **CFNStackName**-CodeBuildServiceRole*
 
@@ -148,8 +152,9 @@ Click **Next**.
 **Add deploy stage:**
 
 - Deployment provider: Select **Amazon ECS** - *This is the mechanism we're choosing to deploy with. CodePipeline also supports several other deployment options, but we're using ECS directly in this case.*
+- Region: **Select the region you're in**
 - Cluster Name: Select your ECS Cluster. In my case, **Cluster-mythical-mysfits-devsecops** - *This is the cluster that CodePipeline will deploy into.*
-- Service Name: Enter `CFNStackName-Mythical-like-service` - *Name the CloudFormation stack that you're going to create/update*
+- Service Name: Enter `CFNStackName-Mythical-Like-Service` - *Name the CloudFormation stack that you're going to create/update*
 - Image definitions file - *optional*: Enter `imagedefinitions.json` - *This is the file we created within the buildspec_prod.yml file earlier*
 
 ![CodePipeline ECS](images/cp-deploy-step.png)
