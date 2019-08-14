@@ -28,8 +28,8 @@ We're going to add a new stage, "Test", between the "Build" and "Deploy" stages.
 
 - Environment Image: Select **Managed Image** - *There are two options. You can either use a predefined Docker container that is curated by CodeBuild, or you can upload your own if you want to customize dependencies etc. to speed up build time*
 - Operating System: Select **Ubuntu** - *This is the OS that will run your build*
-- Runtime: Select **Docker** - *Each image has specific versions of software installed. See [Docker Images Provided by AWS CodeBuild](http://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html)*
-- Runtime version: Select **aws/codebuild/docker:17.09.0** - *This will default to the latest*
+- Runtime: Select **Standard** - *Each image has specific versions of software installed. See [Docker Images Provided by AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html)*
+- Image: **aws/codebuild/standard:1.0**
 - Image version: **Leave as is**
 - Privileged: **Leave as is** - *You can't actually change anything here. In order for to run Docker inside a Docker container, you need to have elevated privileges*
 - Service role: **Existing service role** - *A service role was automatically created for you via CFN*
@@ -39,7 +39,7 @@ We're going to add a new stage, "Test", between the "Build" and "Deploy" stages.
 
 ![CodeBuild Create Project Part 1](images/cb-create-test-project-1.png)
 
-Expand the **Additional Information** and enter the following in Environment Variables:
+Expand the **Additional configuration** and enter the following in Environment Variables:
 
 - Name: `CLAIR_URL` - *Enter this string*
 - Value: ***`REPLACE_ME_LoadBalancerDNS`*** - *This is an output from your CloudFormation stack - LoadBalancerDNS.*

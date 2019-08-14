@@ -32,8 +32,7 @@ On the **Create build project** page, enter in the following details:
 
 - Environment Image: Select **Managed Image** - *There are two options. You can either use a predefined Docker container that is curated by CodeBuild, or you can upload your own if you want to customize dependencies etc. to speed up build time*
 - Operating System: Select **Ubuntu** - *This is the OS that will run your build*
-- Runtime: Select **Docker** - *Each image has specific versions of software installed. See [Docker Images Provided by AWS CodeBuild](http://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html)*
-- Runtime version: Select **Standard** - *This will default to the latest*
+- Runtime: Select **Standard** - *Each image has specific versions of software installed. See [Docker Images Provided by AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html)*
 - Image: **aws/codebuild/standard:1.0**
 - Image version: **Leave as is**
 - Privileged: **Ensure Checked** - *You can't actually change anything here. In order for to run Docker inside a Docker container, you need to have elevated privileges*
