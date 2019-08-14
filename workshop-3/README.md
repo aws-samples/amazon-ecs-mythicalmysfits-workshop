@@ -152,7 +152,7 @@ More information on Task Metadata endpoint can be found here: https://docs.aws.a
 
     ![architecture-diagram-lab1](./images/architecture_diagram_ws3_lab_1.png)
 
-    **The metadata-proxy is not suitable for producton deployments. It is simple used as part of this workshop to demonstrate one approach to consuming the information provided by the ECS Task Metadata Endpoint**
+    **The metadata-proxy is not suitable for production deployments. It is simply used as part of this workshop to demonstrate one approach to consuming the information provided by the ECS Task Metadata Endpoint**
 
     <details>
     <summary>Step by Step</summary>
@@ -882,7 +882,7 @@ Once you've configured **Task Auto Scaling** you will then setup a [CloudWatch D
 <details>
 <summary>Step by Step</summary>
 
-1. In the **Compute** section click **EC2 Container Service**.
+1. In the **Compute** section click **ECS**.
 
 2. In the ECS console click **Cluster-{StackName}** then the service with **Like-Service** in the name.
 
@@ -948,6 +948,8 @@ You can also check your CloudWatch Dashboard to see that the change in task numb
 
 Region | Launch Template
 ------------ | -------------  
+**Oregon** (us-west-2) | [![Launch Mythical Mysfits Stack into Oregon with CloudFormation](/images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=load-generator&templateURL=https://s3.amazonaws.com/mythical-mysfits-website/fargate-ops/load-gen-lab4.yml)
+**Ohio** (us-east-2) | [![Launch Mythical Mysfits Stack into Ohio with CloudFormation](/images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/new?stackName=load-generator&templateURL=https://s3.amazonaws.com/mythical-mysfits-website/fargate-ops/load-gen-lab4.yml)
 **EU (Ireland)** (eu-west-1) | [![Launch Mythical Mysfits Stack into Ireland with CloudFormation](/images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/new?stackName=load-generator&templateURL=https://s3.amazonaws.com/mythical-mysfits-website/fargate-ops/load-gen-lab4.yml)
 **Asia Pacific (Singapore)** (ap-southeast-1) | [![Launch Mythical Mysfits Stack into Singapore with CloudFormation](/images/deploy-to-aws.png)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=load-generator&templateURL=https://s3.amazonaws.com/mythical-mysfits-website/fargate-ops/load-gen-lab4.yml)
 
