@@ -806,7 +806,7 @@ As with the monolith, you'll be using [Fargate](https://aws.amazon.com/fargate/)
 
     <pre>
     $ docker build -t monolith-service:nolike2 .
-    $ docker tag monolith-service:nolike <b><i>ECR_REPOSITORY_URI</i></b>:nolike2
+    $ docker tag monolith-service:nolike2 <b><i>ECR_REPOSITORY_URI</i></b>:nolike2
     $ docker push <b><i>ECR_REPOSITORY_URI</i></b>:nolike2
     </pre>
 
