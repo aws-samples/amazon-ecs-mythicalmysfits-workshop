@@ -10,7 +10,10 @@ CORS(app)
 # sent to the service root will receive a healthy response.
 @app.route("/")
 def healthCheckResponse():
-    return jsonify({"message" : "Nothing here, used for health check. Try /mysfits instead."})
+    flaskResponse = Response(response='{"message" : "Nothing here, used for health check. Try /mysfits instead."}', status=200)
+    flaskResponse.headers["Content-Type"] = "application/json"
+
+    return flaskResponse
 
 # Retrive mysfits from DynamoDB based on provided querystring params, or all
 # mysfits if no querystring is present.
