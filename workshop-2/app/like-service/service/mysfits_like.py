@@ -11,7 +11,10 @@ CORS(app)
 # sent to the service root will receive a healthy response.
 @app.route("/")
 def health_check_response():
-    return jsonify({"message" : "Nothing here, used for health check."})
+    flaskResponse = Response(response='{"message" : "Nothing here, used for health check. Try /mysfits instead."}', status=200)
+    flaskResponse.headers["Content-Type"] = "application/json"
+
+    return flaskResponse
 # indicate that the provided mysfit should be marked as liked.
 
 def process_like_request():
