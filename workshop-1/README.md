@@ -252,7 +252,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
      ---> f24fe4e69d88
     Step 7/10 : RUN pip install -r ./requirements.txt
      ---> Running in 1c878073d631
-    Collecting Flask==0.12.2 (from -r ./requirements.txt (line 1))
+    Collecting Flask==0.12.5 (from -r ./requirements.txt (line 1))
     </pre>
 
     Try reordering the instructions in your Dockerfile to copy the monolith code over after the requirements are installed.  The thinking here is that the Python source will see more changes than the dependencies noted in requirements.txt, so why rebuild requirements every time when we can just have it be another cached layer.
