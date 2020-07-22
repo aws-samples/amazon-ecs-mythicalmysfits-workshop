@@ -179,13 +179,13 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     <pre>
     FROM ubuntu:latest
     RUN apt-get update -y
-    RUN apt-get install -y python-pip python-dev build-essential
-    RUN pip install --upgrade pip
+    RUN apt-get install -y python3-pip python-dev build-essential
+    RUN pip3 install --upgrade pip
     COPY ./service /MythicalMysfitsService
     WORKDIR /MythicalMysfitsService
-    RUN pip install -r ./requirements.txt
+    RUN pip3 install -r ./requirements.txt
     EXPOSE 80
-    ENTRYPOINT ["python"]
+    ENTRYPOINT ["python3"]
     CMD ["mythicalMysfitsService.py"]
     </pre>
     </details>
@@ -207,7 +207,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     You'll see a bunch of output as Docker builds all layers of the image.  If there is a problem along the way, the build process will fail and stop (red text and warnings along the way are fine as long as the build process does not fail).  Otherwise, you'll see a success message at the end of the build output like this:
 
     <pre>
-    Step 9/10 : ENTRYPOINT ["python"]
+    Step 9/10 : ENTRYPOINT ["python3"]
      ---> Running in 7abf5edefb36
     Removing intermediate container 7abf5edefb36
      ---> 653ccee71620
@@ -227,7 +227,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     <summary>HINT</summary>
     Remember that Docker tries to be efficient by caching layers that have not changed.  Once change is introduced, Docker will rebuild that layer and all layers after it.
 
-    Edit mythicalMysfitsService.py by adding an arbitrary comment somewhere in the file.  If you're not familiar with Python, [comments](https://docs.python.org/2/tutorial/introduction.html) start with the hash character, '#' and are essentially ignored when the code is interpreted.
+    Edit mythicalMysfitsService.py by adding an arbitrary comment somewhere in the file.  If you're not familiar with Python, [comments](https://docs.python.org/3/tutorial/introduction.html) start with the hash character, '#' and are essentially ignored when the code is interpreted.
 
     For example, here a comment (`# Author: Mr Bean`) was added before importing the time module:
     <pre>
@@ -250,7 +250,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
      ---> Running in 585701ed4a39
     Removing intermediate container 585701ed4a39
      ---> f24fe4e69d88
-    Step 7/10 : RUN pip install -r ./requirements.txt
+    Step 7/10 : RUN pip3 install -r ./requirements.txt
      ---> Running in 1c878073d631
     Collecting Flask==0.12.5 (from -r ./requirements.txt (line 1))
     </pre>
@@ -267,14 +267,14 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     <pre>
     FROM ubuntu:latest
     RUN apt-get update -y
-    RUN apt-get install -y python-pip python-dev build-essential
-    RUN pip install --upgrade pip
+    RUN apt-get install -y python3-pip python-dev build-essential
+    RUN pip3 install --upgrade pip
     COPY service/requirements.txt .
-    RUN pip install -r ./requirements.txt
+    RUN pip3 install -r ./requirements.txt
     COPY ./service /MythicalMysfitsService
     WORKDIR /MythicalMysfitsService
     EXPOSE 80
-    ENTRYPOINT ["python"]
+    ENTRYPOINT ["python3"]
     CMD ["mythicalMysfitsService.py"]
     </pre>
     </details>
@@ -282,7 +282,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     To see the benefit of your optimizations, you'll need to first rebuild the monolith image using your new Dockerfile (use the same build command at the beginning of step 5).  Then, introduce a change in `mythicalMysfitsService.py` (e.g. add another arbitrary comment) and rebuild the monolith image again.  Docker cached the requirements during the first rebuild after the re-ordering and references cache during this second rebuild.  You should see something similar to below:
 
     <pre>
-    Step 6/11 : RUN pip install -r ./requirements.txt
+    Step 6/11 : RUN pip3 install -r ./requirements.txt
      ---> Using cache
      ---> 612509a7a675
     Step 7/11 : COPY ./service /MythicalMysfitsService
@@ -376,7 +376,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     51aba5103ab9df25c08c18e9cecf540592dcc67d3393ad192ebeda6e872f8e7a
     $ docker ps
     CONTAINER ID        IMAGE                           COMMAND                  CREATED             STATUS              PORTS                  NAMES
-    51aba5103ab9        monolith-service:latest         "python mythicalMysf…"   24 seconds ago      Up 23 seconds       0.0.0.0:8000->80/tcp   awesome_varahamihira
+    51aba5103ab9        monolith-service:latest         "python3 mythicalMysf…"   24 seconds ago      Up 23 seconds       0.0.0.0:8000->80/tcp   awesome_varahamihira
     $ curl localhost:8000/mysfits
     {"mysfits": [...]}
     $ docker logs 51a
