@@ -13,7 +13,7 @@ CORS(app)
 # sent to the service root will receive a healthy response.
 @app.route("/")
 def healthCheckResponse():
-    return jsonify({"message" : "Nothing here, used for health check. Try /mysfits instead."})
+    return jsonify({'message' : 'Nothing here, used for health check.'})
 
 # Retrive mysfits from DynamoDB based on provided querystring params, or all
 # mysfits if no querystring is present.
