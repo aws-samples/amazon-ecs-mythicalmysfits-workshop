@@ -3,7 +3,7 @@ from __future__ import print_function
 import os
 import sys
 import requests
-from urlparse import urlparse
+from urllib.parse import urlparse
 from flask import Flask, jsonify, json, Response, request
 from flask_cors import CORS
 
