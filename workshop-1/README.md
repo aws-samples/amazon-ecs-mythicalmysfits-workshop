@@ -153,22 +153,25 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     #[TODO]: Copy the "service" directory into container image
 
     - Consider the [COPY](https://docs.docker.com/engine/reference/builder/#copy) command
-    - You're copying both the python source files and requirements.txt from the "monolith-service/service" directory on your EC2 instance into the working directory of the container, which can be specified as "."
+    - You're copying both the python source files and requirements.txt from the "monolith-service/service" directory on your EC2 instance into a working directory within the container, which can be something like "/MythicalMysfitsService"
+    - Consider the [WORKDIR](https://docs.docker.com/engine/reference/builder/#workdir) command as a way to navigate within the context of the container's directory structure
 
-    #[TODO]: Install dependencies listed in the requirements.txt file using pip
+    #[TODO]: Install dependencies listed in the requirements.txt file using pip3
 
     - Consider the [RUN](https://docs.docker.com/engine/reference/builder/#run) command
     - More on [pip and requirements files](https://pip.pypa.io/en/stable/user_guide/#requirements-files)
+    - Btw, the team upgraded to python3 recently, so you'll want to use 'pip3' not 'pip'
 
     #[TODO]: Specify a listening port for the container
 
     - Consider the [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose) command
     - App listening portNum can be found in the app source - mythicalMysfitsService.py
 
-    #[TODO]: Run "mythicalMysfitsService.py" as the final step. We want this container to run as an executable. Looking at ENTRYPOINT for this?
+    #[TODO]: Run "mythicalMysfitsService.py" as the final step. We want this container to run as an executable. Looking at ENTRYPOINT and CMD for this?
 
-    - Consider the [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint) command
-    - Our ops team typically runs 'python mythicalMysfitsService.py' to launch the application on our servers.
+    - Consider the [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint) and [CMD](https://docs.docker.com/engine/reference/builder/#cmd) commands
+    - [ENTRYPOINT and CMD](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact) can be used together
+    - Our ops team typically runs 'python3 mythicalMysfitsService.py' to launch the application on our servers.
     </pre>
     </details>
 
@@ -179,13 +182,17 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     <pre>
     FROM ubuntu:latest
     RUN apt-get update -y
-    RUN apt-get install -y python-pip python-dev build-essential
-    RUN pip install --upgrade pip
+    RUN apt-get install -y python3-pip python-dev build-essential
+    RUN pip3 install --upgrade pip
+    #[TODO]: Copy python source files and requirements file into container image
     COPY ./service /MythicalMysfitsService
     WORKDIR /MythicalMysfitsService
-    RUN pip install -r ./requirements.txt
+    #[TODO]: Install dependencies listed in the requirements.txt file using pip3
+    RUN pip3 install -r ./requirements.txt
+    #[TODO]: Specify a listening port for the container
     EXPOSE 80
-    ENTRYPOINT ["python"]
+    #[TODO]: Run the monolith.py as the final step
+    ENTRYPOINT ["python3"]
     CMD ["mythicalMysfitsService.py"]
     </pre>
     </details>
@@ -207,7 +214,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     You'll see a bunch of output as Docker builds all layers of the image.  If there is a problem along the way, the build process will fail and stop (red text and warnings along the way are fine as long as the build process does not fail).  Otherwise, you'll see a success message at the end of the build output like this:
 
     <pre>
-    Step 9/10 : ENTRYPOINT ["python"]
+    Step 9/10 : ENTRYPOINT ["python3"]
      ---> Running in 7abf5edefb36
     Removing intermediate container 7abf5edefb36
      ---> 653ccee71620
@@ -250,7 +257,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
      ---> Running in 585701ed4a39
     Removing intermediate container 585701ed4a39
      ---> f24fe4e69d88
-    Step 7/10 : RUN pip install -r ./requirements.txt
+    Step 7/10 : RUN pip3 install -r ./requirements.txt
      ---> Running in 1c878073d631
     Collecting Flask==0.12.5 (from -r ./requirements.txt (line 1))
     </pre>
@@ -267,14 +274,14 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     <pre>
     FROM ubuntu:latest
     RUN apt-get update -y
-    RUN apt-get install -y python-pip python-dev build-essential
-    RUN pip install --upgrade pip
-    COPY service/requirements.txt .
-    RUN pip install -r ./requirements.txt
+    RUN apt-get install -y python3-pip python-dev build-essential
+    RUN pip3 install --upgrade pip
+    COPY ./service/requirements.txt .
+    RUN pip3 install -r ./requirements.txt
     COPY ./service /MythicalMysfitsService
     WORKDIR /MythicalMysfitsService
     EXPOSE 80
-    ENTRYPOINT ["python"]
+    ENTRYPOINT ["python3"]
     CMD ["mythicalMysfitsService.py"]
     </pre>
     </details>
@@ -282,7 +289,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     To see the benefit of your optimizations, you'll need to first rebuild the monolith image using your new Dockerfile (use the same build command at the beginning of step 5).  Then, introduce a change in `mythicalMysfitsService.py` (e.g. add another arbitrary comment) and rebuild the monolith image again.  Docker cached the requirements during the first rebuild after the re-ordering and references cache during this second rebuild.  You should see something similar to below:
 
     <pre>
-    Step 6/11 : RUN pip install -r ./requirements.txt
+    Step 6/11 : RUN pip3 install -r ./requirements.txt
      ---> Using cache
      ---> 612509a7a675
     Step 7/11 : COPY ./service /MythicalMysfitsService
