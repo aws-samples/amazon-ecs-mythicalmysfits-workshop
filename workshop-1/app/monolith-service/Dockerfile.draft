@@ -8,4 +8,4 @@ RUN pip3 install --upgrade pip
 
 #[TODO]: Specify a listening port for the container
 
-#[TODO]: Run the monolith.py as the final step. We want this container to run as an executable. Looking at ENTRYPOINT and CMD for this?
+#[TODO]: Run mythicalMysfitsService.py as the final step. We want this container to run as an executable. Looking at ENTRYPOINT and CMD for this?

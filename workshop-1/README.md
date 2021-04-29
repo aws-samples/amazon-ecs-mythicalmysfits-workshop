@@ -191,7 +191,7 @@ The Mythical Mysfits adoption agency infrastructure has always been running dire
     RUN pip3 install -r ./requirements.txt
     #[TODO]: Specify a listening port for the container
     EXPOSE 80
-    #[TODO]: Run the monolith.py as the final step
+    #[TODO]: Run mythicalMysfitsService.py as the final step
     ENTRYPOINT ["python3"]
     CMD ["mythicalMysfitsService.py"]
     </pre>
