@@ -642,6 +642,7 @@ As with the monolith, you'll be using [Fargate](https://aws.amazon.com/fargate/)
     # @app.route("/mysfits/<mysfit_id>/fulfill-like", methods=['POST'])
     # def fulfillLikeMysfit(mysfit_id):
     #     serviceResponse = mysfitsTableClient.likeMysfit(mysfit_id)
+    #     process_like_request()
     #     flaskResponse = Response(serviceResponse)
     #     flaskResponse.headers["Content-Type"] = "application/json"
     #     return flaskResponse
