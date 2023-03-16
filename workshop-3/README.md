@@ -796,7 +796,7 @@ As the dev team continues down the road of microservices, they're using [AWS Cod
     
 2. Monitor the deployment to make sure all stages are successful.
 
-    Navigate to the [CodeSuite dashboard](https://console.aws.amazon.com/codesuite).
+    Navigate to the [code services dashboard](https://console.aws.amazon.com/codesuite).
 
     Expand the **Pipeline CodePipeline** section in the left menu.  
     
