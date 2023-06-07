@@ -1,3 +1,4 @@
-Flask==1.0.0
-flask-cors==3.0.9
-requests==2.20.0
+Flask==2.2.5
+flask-cors==3.0.10
+requests==2.31.0
+markupsafe==2.1.3
