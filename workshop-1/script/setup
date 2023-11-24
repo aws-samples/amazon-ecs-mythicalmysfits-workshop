@@ -27,4 +27,7 @@ sudo script/credhelper
 echo "Attaching Instance Profile to Cloud9..."
 script/associate-profile
 
+echo "Resizing Cloud9 root volume..."
+script/resize
+
 echo "Success!"
