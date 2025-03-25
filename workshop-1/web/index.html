@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!--
-    A new version of the Mythical Mysfits website that has enabled user
-    registration and login, as well as the ability to logged in users to like
-    and mark mysfits as adopted.
-  -->
-  <head>
+<!--
+  A new version of the Mythical Mysfits website that has enabled user
+  registration and login, as well as the ability to logged in users to like
+  and mark mysfits as adopted.
+-->
+<head>
     <title>Mythical Mysfits</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,143 +17,143 @@
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.135.0.min.js"></script>
     <script src="js/aws-cognito-sdk.min.js"></script>
     <script src="js/amazon-cognito-identity.min.js"></script>
-  </head>
-  <body ng-app="mysfitsApp">
-    <style>
-      @media (max-width: 800px) {
-      	img {
-          max-width: 300px;
-      	}
-      }
-    </style>
-    <br>
-    <div style="text-align: center">
-      <img src="https://www.mythicalmysfits.com/images/aws_mythical_banner.png" width="800px" align="center">
+</head>
+<body ng-app="mysfitsApp">
+<style>
+    @media (max-width: 800px) {
+        img {
+        max-width: 300px;
+        }
+    }
+</style>
+<br>
+<div style="text-align: center">
+    <img src="https://REPLACE_ME_WEB_ENDPOINT/web/images/aws_mythical_banner.png" width="800px" align="center">
+</div>
+<div class="container">
+    <div class='btn-toolbar float-right'>
+        <button type="button" id="logInButton" class="btn btn-info btn-lg d-none" data-toggle="modal" data-target="#loginModal">Log In / Register</button>
+        <button type="button" id="logOutButton" class="btn btn-danger btn-lg d-none">Log Out</button>
     </div>
-    <div class="container">
-        <div class='btn-toolbar float-right'>
-          <button type="button" id="logInButton" class="btn btn-info btn-lg d-none" data-toggle="modal" data-target="#loginModal">Log In / Register</button>
-          <button type="button" id="logOutButton" class="btn btn-danger btn-lg d-none">Log Out</button>
-        </div>
-    </div>
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
+</div>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
-            <span class="sr-only">Close</span>
-          </button>
-        </div>
-
-        <!-- Modal Body -->
-        <div class="modal-body">
-          <form id="loginForm">
-            <input type="text" id ="email" name="email" placeholder="Email" />
-            <input type="password" id="pwd" name="pwd" placeholder="Password" />
-            <input type="submit" id="login-modal-button" name="login" class="btn btn-info" value="Login"/ >
-          </form>
-          <div class="login-help">
-            <a href="register.html">Register</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-    <div class="container" ng-controller="mysfitsFilterController">
-      <div id="filterMenu">
-        <ul class="nav nav-pills">
-          &nbsp;
-          <li class="nav-item dropdown" ng-repeat="filterCategory in filterOptionsList.categories">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">{{filterCategory.title}}</a>
-            <div class="dropdown-menu" >
-              <button class="dropdown-item" ng-repeat="filterCategorySelection in filterCategory.selections" ng-click="queryMysfits(filterCategory.title, filterCategorySelection)">{{filterCategorySelection}}</button>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
             </div>
-          </li>
-          &nbsp;
-          <li class="nav-item " >
-            <button type="button" class="btn btn-success" ng-click="removeFilter()">View All</button>
-          </li>
-        </ul>
-      </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form id="loginForm">
+                    <input type="text" id ="email" name="email" placeholder="Email" />
+                    <input type="password" id="pwd" name="pwd" placeholder="Password" />
+                    <input type="submit" id="login-modal-button" name="login" class="btn btn-info" value="Login"/ >
+                </form>
+                <div class="login-help">
+                    <a href="register.html">Register</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <br>
-    <div class="container">
-      <div id="mysfitsGrid" class="row" ng-controller="mysfitsListController">
+</div>
+<div class="container" ng-controller="mysfitsFilterController">
+    <div id="filterMenu">
+        <ul class="nav nav-pills">
+            &nbsp;
+            <li class="nav-item dropdown" ng-repeat="filterCategory in filterOptionsList.categories">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#!" role="button" aria-haspopup="true" aria-expanded="false">{{filterCategory.title}}</a>
+                <div class="dropdown-menu" >
+                    <button class="dropdown-item" ng-repeat="filterCategorySelection in filterCategory.selections" ng-click="queryMysfits(filterCategory.title, filterCategorySelection)">{{filterCategorySelection}}</button>
+                </div>
+            </li>
+            &nbsp;
+            <li class="nav-item " >
+                <button type="button" class="btn btn-success" ng-click="removeFilter()">View All</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div id="mysfitsGrid" class="row" ng-controller="mysfitsListController">
         <div class="col-md-4 border border-warning" ng-repeat="mysfit in mysfits">
             <br>
             <p align="center">
-              <strong> {{mysfit.name}}</strong>
-              <br>
-              <img src="{{mysfit.thumbImageUri}}" alt="{{mysfit.Name}}">
-              <br>
-              <br>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profileModal" data-mysfitid="{{mysfit.mysfitId}}">View Profile</button>
+                <strong> {{mysfit.name}}</strong>
+                <br>
+                <img src="{{mysfit.thumbImageUri}}" alt="{{mysfit.Name}}">
+                <br>
+                <br>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profileModal" data-mysfitid="{{mysfit.mysfitId}}">View Profile</button>
             </p>
             <p>
-              <br>
-              <b>Species:</b> {{mysfit.species}}
-              <br>
-              <b>Good/Evil:</b> {{mysfit.goodevil}}
-              <br>
-              <b>Lawful/Chaotic:</b> {{mysfit.lawchaos}}
-              <span style="float:right;">
-                <img id="{{mysfit.mysfitId}}LikeIcon" ng-click="likeClicked(mysfit.mysfitId)" src="https://www.mythicalmysfits.com/images/like_icon_false.png" onmouseover="" style="cursor: pointer;">
-                <img id="{{mysfit.mysfitId}}AlreadyLikedIcon" class="d-none" src="https://www.mythicalmysfits.com/images/like_icon_true.png" >
+                <br>
+                <b>Species:</b> {{mysfit.species}}
+                <br>
+                <b>Good/Evil:</b> {{mysfit.goodevil}}
+                <br>
+                <b>Lawful/Chaotic:</b> {{mysfit.lawchaos}}
+                <span style="float:right;">
+                <img id="{{mysfit.mysfitId}}LikeIcon" ng-click="likeClicked(mysfit.mysfitId)" src="https://REPLACE_ME_WEB_ENDPOINT/web/images/like_icon_false.png" onmouseover="" style="cursor: pointer;">
+                <img id="{{mysfit.mysfitId}}AlreadyLikedIcon" class="d-none" src="https://REPLACE_ME_WEB_ENDPOINT/web/images/like_icon_true.png" >
               </span>
             </p>
         </div>
-      </div>
     </div>
-    <div class="modal fade bd-example-modal-lg" id="profileModal" tabindex="-1" aria-hidden="true" ng-controller="mysfitProfileController">
-      <div class="modal-dialog modal-lg">
+</div>
+<div class="modal fade bd-example-modal-lg" id="profileModal" tabindex="-1" aria-hidden="true" ng-controller="mysfitProfileController">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h3>Mysfit Profile</h3>
-            <button type="button" class="close" data-dismiss="modal">
-              <span aria-hidden="true">&times;</span>
-              <span class="sr-only">Close</span>
-            </button>
-          </div>
-        <!-- Modal Body -->
-          <div class="modal-body">
-            <p align="center">
-              <img id="profileImage" src="{{profileMysfit.profileImageUri}}" align="center" />
-            </p>
-            <br>
-            <p id="profileName"><b>Name:</b> {{profileMysfit.name}}</p>
-            <p id="profileSpecies"><b>Species:</b> {{profileMysfit.species}}</p>
-            <p id="profileGoodEvil"><b>Good/Evil:</b> {{profileMysfit.goodevil}} </p>
-            <p id="profileLawChaos"><b>Lawful/Chaotic:</b> {{profileMysfit.lawchaos}} </p>
-            <p id="profileAge"><b>Age:</b> {{profileMysfit.age}}</p>
-            <p id="profileDescription"><b>Description:</b> {{profileMysfit.description}}</p>
-            <p id="profileLikes"><b>Likes:</b> {{profileMysfit.likes}}</p>
-            <p align="center">
-              <button id="adoptButton" align="center" type="button" ng-click="adoptClicked(profileMysfit.mysfitId)" class="btn btn-primary">Adopt Me Now!</button>
-              <button id="alreadyAdoptedButton" align="center" type="button" class="btn btn-primary d-none" disabled>Mysfit Adopted!</button>
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-         </div>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h3>Mysfit Profile</h3>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p align="center">
+                    <img id="profileImage" src="{{profileMysfit.profileImageUri}}" align="center" />
+                </p>
+                <br>
+                <p id="profileName"><b>Name:</b> {{profileMysfit.name}}</p>
+                <p id="profileSpecies"><b>Species:</b> {{profileMysfit.species}}</p>
+                <p id="profileGoodEvil"><b>Good/Evil:</b> {{profileMysfit.goodevil}} </p>
+                <p id="profileLawChaos"><b>Lawful/Chaotic:</b> {{profileMysfit.lawchaos}} </p>
+                <p id="profileAge"><b>Age:</b> {{profileMysfit.age}}</p>
+                <p id="profileDescription"><b>Description:</b> {{profileMysfit.description}}</p>
+                <p id="profileLikes"><b>Likes:</b> {{profileMysfit.likes}}</p>
+                <p align="center">
+                    <button id="adoptButton" align="center" type="button" ng-click="adoptClicked(profileMysfit.mysfitId)" class="btn btn-primary">Adopt Me Now!</button>
+                    <button id="alreadyAdoptedButton" align="center" type="button" class="btn btn-primary d-none" disabled>Mysfit Adopted!</button>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
-      </div>
     </div>
-    <div style="text-align: center">
+</div>
+<div style="text-align: center">
     <p>
-      <br>
-      <br>
-      &nbsp;&nbsp;This site was created for use in the AWS Modern Application Workshop. <a href="https://github.com/aws-samples/amazon-ecs-mythicalmysfits-workshop">Please see details here.</a>
+        <br>
+        <br>
+        &nbsp;&nbsp;This site was created for use in the AWS Modern Application Workshop. <a href="https://github.com/aws-samples/amazon-ecs-mythicalmysfits-workshop">Please see details here.</a>
     </p>
-    </div>
-  </body>
-  <script>
+</div>
+</body>
+<script>
 
     var REQUIRE_AUTH = false;
 
-    var mysfitsApiEndpoint = 'REPLACE_ME_API_ENDPOINT'; // example: 'https://abcd12345.execute-api.us-east-1.amazonaws.com/prod'
+    var mysfitsApiEndpoint = 'http://a5bd3b6f8f57a4d3ca2bf36441904ec0-932795117.ap-southeast-2.elb.amazonaws.com'; // example: 'https://abcd12345.execute-api.us-east-1.amazonaws.com/prod'
     var cognitoUserPoolId = 'REPLACE_ME_USER_POOL_ID';  // example: 'us-east-1_abcd12345'
     var cognitoUserPoolClientId = 'REPLACE_ME_CLIENT_ID'; // example: 'abcd12345abcd12345abcd12345'
     var awsRegion = 'REPLACE_ME_REGION'; // example: 'us-east-1' or 'eu-west-1' etc.
@@ -575,5 +575,5 @@
     }
 
 
-  </script>
+</script>
 </html>
