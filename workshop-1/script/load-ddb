@@ -3,6 +3,7 @@
 set -eu
 
 TABLE_NAME="$(jq < cfn-output.json -r '.DynamoTable')"
+SITE_BUCKET="$(jq < cfn-output.json -r '.SiteBucket')"
 
 read -r -d '' items <<EOF || true
 {
@@ -32,10 +33,10 @@ read -r -d '' items <<EOF || true
             "S":"Lawful"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/chimera_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/chimera_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/chimera_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/chimera_hover.png"
           },
           "Likes":{
             "N":"0"
@@ -71,10 +72,10 @@ read -r -d '' items <<EOF || true
             "S":"Lawful"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/cyclops_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/cyclops_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/cyclops_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/cyclops_hover.png"
           },
           "Likes":{
             "N":"0"
@@ -110,10 +111,10 @@ read -r -d '' items <<EOF || true
             "S":"Chaotic"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/dragon_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/dragon_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/dragon_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/dragon_hover.png"
           },
           "Likes":{
             "N":"0"
@@ -149,10 +150,10 @@ read -r -d '' items <<EOF || true
             "S":"Neutral"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/gorgon_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/gorgon_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/gorgon_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/gorgon_hover.png"
           },
           "Likes":{
             "N":"0"
@@ -188,10 +189,10 @@ read -r -d '' items <<EOF || true
             "S":"Neutral"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/haetae_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/haetae_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/haetae_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/haetae_hover.png"
           },
           "Likes":{
             "N":"0"
@@ -227,10 +228,10 @@ read -r -d '' items <<EOF || true
             "S":"Neutral"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/yeti_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/yeti_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/yeti_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/yeti_hover.png"
           },
           "Likes":{
             "N":"0"
@@ -266,10 +267,10 @@ read -r -d '' items <<EOF || true
             "S":"Chaotic"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/kraken_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/kraken_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/kraken_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/kraken_hover.png"
           },
           "Likes":{
             "N":"0"
@@ -305,10 +306,10 @@ read -r -d '' items <<EOF || true
             "S":"Neutral"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/nessie_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/nessie_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/nessie_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/nessie_hover.png"
           },
           "Likes":{
             "N":"0"
@@ -344,10 +345,10 @@ read -r -d '' items <<EOF || true
             "S":"Neutral"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/mandrake_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/mandrake_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/mandrake_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/mandrake_hover.png"
           },
           "Likes":{
             "N":"0"
@@ -383,10 +384,10 @@ read -r -d '' items <<EOF || true
             "S":"Lawful"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/pegasus_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/pegasus_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/pegasus_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/pegasus_hover.png"
           },
           "Likes":{
             "N":"0"
@@ -422,10 +423,10 @@ read -r -d '' items <<EOF || true
             "S":"Chaotic"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/phoenix_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/phoenix_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/phoenix_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/phoenix_hover.png"
           },
           "Likes":{
             "N":"0"
@@ -461,10 +462,10 @@ read -r -d '' items <<EOF || true
             "S":"Chaotic"
           },
           "ThumbImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/troll_thumb.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/troll_thumb.png"
           },
           "ProfileImageUri":{
-            "S":"https://www.mythicalmysfits.com/images/troll_hover.png"
+            "S":"https://$SITE_BUCKET.s3.amazonaws.com/web/images/troll_hover.png"
           },
           "Likes":{
             "N":"0"
