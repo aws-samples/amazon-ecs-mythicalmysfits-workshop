@@ -33,4 +33,14 @@ sed_prog="s|REPLACE_ME_API_ENDPOINT|http://$API_ENDPOINT|;"
 $sed_cmd -i $sed_prog $TEMP_DIR/index.html
 $sed_cmd -i $sed_prog $TEMP_DIR/register.html
 $sed_cmd -i $sed_prog $TEMP_DIR/confirm.html
+
+#update endpoint for banner and like/no-like
+sed_prog="s|REPLACE_ME_WEB_ENDPOINT|$BUCKET_NAME.s3.amazonaws.com|;"
+$sed_cmd -i $sed_prog $TEMP_DIR/index.html
+$sed_cmd -i $sed_prog $TEMP_DIR/register.html
+$sed_cmd -i $sed_prog $TEMP_DIR/confirm.html
+
 aws s3 sync $TEMP_DIR s3://$BUCKET_NAME
+aws s3 cp web/images s3://$BUCKET_NAME/web/images --recursive
+
+
