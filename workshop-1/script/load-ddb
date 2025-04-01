@@ -3,6 +3,7 @@
 set -eu
 
 TABLE_NAME="$(jq < cfn-output.json -r '.DynamoTable')"
+SITE_BUCKET="$(jq < cfn-output.json -r '.SiteBucket // empty')"
 
 read -r -d '' items <<EOF || true
 {
