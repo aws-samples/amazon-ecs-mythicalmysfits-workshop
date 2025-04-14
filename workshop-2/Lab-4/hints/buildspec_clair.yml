@@ -18,8 +18,7 @@ phases:
  
       # Getting our Docker registry (ECR) login info for Klar and Clair to use
       - echo Getting Docker registry login info
-      - DOCKER_LOGIN=`aws ecr get-login --region $AWS_DEFAULT_REGION`
-      - PASSWORD=`echo $DOCKER_LOGIN | cut -d' ' -f6`
+      - PASSWORD=`aws ecr get-login-password --region $AWS_DEFAULT_REGION`
   build:
     commands:
       - echo Calling Clair with Klar
