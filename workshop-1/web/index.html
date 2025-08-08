@@ -28,7 +28,8 @@
     </style>
     <br>
     <div style="text-align: center">
-      <img src="https://REPLACE_ME_WEB_ENDPOINT/web/images/aws_mythical_banner.png" width="800px" align="center">
+      <img src="http://REPLACE_ME_WEITH_S3WebsiteURL/web/images/aws_mythical_banner.png" width="800px" align="center"> 
+      <!-- http://containersid-mythicalbucket-gaaci948egvq.s3-website-us-west-2.amazonaws.com/web/images/aws_mythical_banner.png -->
     </div>
     <div class="container">
         <div class='btn-toolbar float-right'>
@@ -99,8 +100,10 @@
               <br>
               <b>Lawful/Chaotic:</b> {{mysfit.lawchaos}}
               <span style="float:right;">
-                <img id="{{mysfit.mysfitId}}LikeIcon" ng-click="likeClicked(mysfit.mysfitId)" src="https://REPLACE_ME_WEB_ENDPOINT/web/images/like_icon_false.png" onmouseover="" style="cursor: pointer;">
-                <img id="{{mysfit.mysfitId}}AlreadyLikedIcon" class="d-none" src="https://REPLACE_ME_WEB_ENDPOINT/web/images/like_icon_true.png" >
+                <img id="{{mysfit.mysfitId}}LikeIcon" ng-click="likeClicked(mysfit.mysfitId)" src="http://REPLACE_ME_WITH_S3WebsiteURL/web/images/like_icon_false.png" onmouseover="" style="cursor: pointer;">
+                <img id="{{mysfit.mysfitId}}AlreadyLikedIcon" class="d-none" src="http://REPLACE_ME_WITH_S3WebsiteURL/web/images/like_icon_true.png" >
+                      <!-- EXAMPLE http://containersid-mythicalbucket-gaaci948egvq.s3-website-us-west-2.amazonaws.com/web/images/like_icon_true.png -->
+
               </span>
             </p>
         </div>
@@ -153,7 +156,7 @@
 
     var REQUIRE_AUTH = false;
 
-    var mysfitsApiEndpoint = 'REPLACE_ME_API_ENDPOINT'; // example: 'https://abcd12345.execute-api.us-east-1.amazonaws.com/prod'
+    var mysfitsApiEndpoint = 'REPLACE_ME_API_ENDPOINT'; // example: 'http://abcd12345.execute-api.us-east-1.amazonaws.com'
     var cognitoUserPoolId = 'REPLACE_ME_USER_POOL_ID';  // example: 'us-east-1_abcd12345'
     var cognitoUserPoolClientId = 'REPLACE_ME_CLIENT_ID'; // example: 'abcd12345abcd12345abcd12345'
     var awsRegion = 'REPLACE_ME_REGION'; // example: 'us-east-1' or 'eu-west-1' etc.
