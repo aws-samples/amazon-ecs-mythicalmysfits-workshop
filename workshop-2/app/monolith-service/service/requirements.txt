@@ -1,4 +1,4 @@
 Flask==2.2.5
 flask-cors==3.0.10
-boto3==1.26.148
+boto3==1.34.41
 markupsafe==2.1.3
